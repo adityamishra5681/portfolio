@@ -1,0 +1,65 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="148" y1="117" x2="886" y2="902" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08111F"/>
+      <stop offset="0.55" stop-color="#0B1326"/>
+      <stop offset="1" stop-color="#04070C"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="240" y1="164" x2="790" y2="862" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4C95D"/>
+      <stop offset="0.5" stop-color="#D4141C"/>
+      <stop offset="1" stop-color="#8E0F14"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="337" y1="260" x2="687" y2="748" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#66D9FF"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0.2"/>
+    </linearGradient>
+    <radialGradient id="core" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 520) rotate(90) scale(168)">
+      <stop stop-color="#FFF4C7"/>
+      <stop offset="0.35" stop-color="#F4C95D"/>
+      <stop offset="1" stop-color="#D4141C" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="0" y="0" width="1024" height="1024" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" rx="96" fill="url(#bg)"/>
+  <circle cx="512" cy="512" r="336" fill="#0A1427" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+  <circle cx="512" cy="512" r="292" fill="none" stroke="rgba(102,217,255,0.18)" stroke-width="8"/>
+  <circle cx="512" cy="512" r="246" fill="none" stroke="rgba(244,201,93,0.24)" stroke-width="4" stroke-dasharray="18 14"/>
+
+  <path d="M512 166L781 322V702L512 858L243 702V322L512 166Z" fill="none" stroke="url(#frame)" stroke-width="24" stroke-linejoin="round" filter="url(#glow)"/>
+  <path d="M512 196L756 337V687L512 828L268 687V337L512 196Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+
+  <path d="M512 276L656 360V528L512 612L368 528V360L512 276Z" fill="rgba(212,20,28,0.16)" stroke="rgba(244,201,93,0.28)" stroke-width="4"/>
+  <circle cx="512" cy="444" r="116" fill="url(#core)"/>
+  <circle cx="512" cy="444" r="84" fill="none" stroke="rgba(102,217,255,0.65)" stroke-width="12"/>
+  <circle cx="512" cy="444" r="44" fill="#EAF8FF" opacity="0.95"/>
+  <circle cx="512" cy="444" r="22" fill="#66D9FF"/>
+
+  <path d="M428 490L462 404H498L474 468H550L526 404H562L596 490H560L548 458H476L464 490H428Z" fill="#FFF5D4"/>
+  <path d="M420 558L512 506L604 558L548 642H476L420 558Z" fill="url(#accent)" stroke="rgba(102,217,255,0.3)" stroke-width="4"/>
+  <path d="M458 570H566L545 622H478L458 570Z" fill="#D4141C" opacity="0.9"/>
+
+  <g opacity="0.9">
+    <circle cx="296" cy="334" r="8" fill="#F4C95D"/>
+    <circle cx="728" cy="334" r="8" fill="#F4C95D"/>
+    <circle cx="296" cy="690" r="8" fill="#F4C95D"/>
+    <circle cx="728" cy="690" r="8" fill="#F4C95D"/>
+  </g>
+
+  <g opacity="0.35">
+    <path d="M512 262V206" stroke="#66D9FF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M512 818V762" stroke="#66D9FF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M250 512H306" stroke="#66D9FF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M718 512H774" stroke="#66D9FF" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <text x="512" y="770" fill="#F4C95D" font-family="Orbitron, Arial, sans-serif" font-size="54" font-weight="700" text-anchor="middle" letter-spacing="8">ADITYA</text>
+  <text x="512" y="818" fill="#9AA7BD" font-family="Rajdhani, Arial, sans-serif" font-size="26" font-weight="600" text-anchor="middle" letter-spacing="6">AVENGERS INSPIRED</text>
+</svg>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects | Aditya Mishra</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div class="arc-reactor-bg"></div>
+  <div class="hex-overlay"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="logo-am">AM</span><span class="logo-text">ADITYA<span class="logo-accent">.</span></span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn"><span class="theme-icon" id="themeIcon">☀️</span></button>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag reveal">// MY WORK</span>
+      <h1 class="reveal">My <span class="gold-text">Projects</span></h1>
+      <p class="reveal" style="color:var(--text-muted);max-width:500px;margin:0 auto">Real projects built with real code. Hover the cards to see details.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="projects-big-grid">
+
+        <!-- PROJECT 1 -->
+        <div class="proj-card reveal">
+          <div class="proj-card-inner">
+            <div class="proj-front">
+              <div class="proj-num">01</div>
+              <div class="proj-icon-big">🌦️</div>
+              <h3>Weather App</h3>
+              <p>Real-time weather data for any city worldwide using OpenWeatherMap API.</p>
+              <div class="proj-stack">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>REST API</span>
+              </div>
+            </div>
+            <div class="proj-back">
+              <h3>Weather App</h3>
+              <ul class="proj-features">
+                <li>✦ Live weather data via OpenWeatherMap API</li>
+                <li>✦ Search any city globally</li>
+                <li>✦ Displays temp, humidity, wind speed</li>
+                <li>✦ Dynamic weather icons & backgrounds</li>
+                <li>✦ Fully responsive design</li>
+              </ul>
+              <div class="proj-back-actions">
+                <a href="https://github.com/adityamishra5681/weather-app" target="_blank" class="btn-avenger">View on GitHub ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="proj-card reveal">
+          <div class="proj-card-inner">
+            <div class="proj-front">
+              <div class="proj-num">02</div>
+              <div class="proj-icon-big">🪙</div>
+              <h3>Token Farming Platform</h3>
+              <p>A blockchain-inspired DeFi platform UI for staking and earning tokens.</p>
+              <div class="proj-stack">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Web3 UI</span>
+              </div>
+            </div>
+            <div class="proj-back">
+              <h3>Token Farming Platform</h3>
+              <ul class="proj-features">
+                <li>✦ Interactive staking dashboard</li>
+                <li>✦ Token balance & rewards tracker</li>
+                <li>✦ Animated UI with DeFi aesthetics</li>
+                <li>✦ Responsive across all devices</li>
+                <li>✦ Modern glassmorphism design</li>
+              </ul>
+              <div class="proj-back-actions">
+                <a href="https://github.com/adityamishra5681/Token-Farming-Platform" target="_blank" class="btn-avenger">View on GitHub ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 3 — THIS PORTFOLIO -->
+        <div class="proj-card reveal">
+          <div class="proj-card-inner">
+            <div class="proj-front">
+              <div class="proj-num">03</div>
+              <div class="proj-icon-big">🦸</div>
+              <h3>Avengers Portfolio</h3>
+              <p>This very website — an Avengers-themed personal portfolio with dark/light mode.</p>
+              <div class="proj-stack">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Animations</span>
+              </div>
+            </div>
+            <div class="proj-back">
+              <h3>Avengers Portfolio</h3>
+              <ul class="proj-features">
+                <li>✦ 6-page multi-page website</li>
+                <li>✦ Dark / Light mode toggle</li>
+                <li>✦ Particle canvas animation</li>
+                <li>✦ 3D flip project cards</li>
+                <li>✦ Typewriter hero effect</li>
+                <li>✦ Scroll reveal animations</li>
+              </ul>
+              <div class="proj-back-actions">
+                <a href="https://github.com/adityamishra5681" target="_blank" class="btn-avenger">GitHub Profile ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- GITHUB CTA -->
+      <div class="github-cta reveal">
+        <div class="github-cta-inner">
+          <span class="github-icon">🐙</span>
+          <div>
+            <h3>More on GitHub</h3>
+            <p>Check out my GitHub profile for all repositories, contributions, and ongoing work.</p>
+          </div>
+          <a href="https://github.com/adityamishra5681" target="_blank" class="btn-avenger">Visit GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="nav-logo" style="font-size:1.1rem"><span class="logo-am">AM</span> <span class="logo-text">ADITYA<span class="logo-accent">.</span></span></span>
+        <p>© 2025 Aditya Mishra · Techno India University</p>
+        <div class="footer-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

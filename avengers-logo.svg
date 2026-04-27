@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#0a0a0f" stroke="#c5a059" stroke-width="3"/>
+  
+  <!-- Outer glow ring -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#c5a059" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Avengers "A" Symbol -->
+  <g transform="translate(100, 100)">
+    <!-- Main A structure -->
+    <path d="M 0,-60 L -35,50 L -20,50 L -15,30 L 15,30 L 20,50 L 35,50 Z" 
+          fill="#c5a059" stroke="#c5a059" stroke-width="2"/>
+    
+    <!-- A crossbar -->
+    <rect x="-12" y="10" width="24" height="8" fill="#0a0a0f"/>
+    
+    <!-- Inner triangle cutout -->
+    <path d="M 0,-45 L -10,15 L 10,15 Z" fill="#0a0a0f"/>
+    
+    <!-- Arc reactor center glow -->
+    <circle cx="0" cy="0" r="8" fill="#c5a059" opacity="0.8"/>
+    <circle cx="0" cy="0" r="5" fill="#ffffff" opacity="0.9"/>
+    <circle cx="0" cy="0" r="3" fill="#c5a059"/>
+  </g>
+  
+  <!-- Decorative corner elements -->
+  <path d="M 20,20 L 35,20 L 35,35" stroke="#c5a059" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M 180,20 L 165,20 L 165,35" stroke="#c5a059" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M 20,180 L 35,180 L 35,165" stroke="#c5a059" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M 180,180 L 165,180 L 165,165" stroke="#c5a059" stroke-width="2" fill="none" opacity="0.5"/>
+  
+  <!-- Hexagonal pattern overlay -->
+  <g opacity="0.1">
+    <path d="M 100,30 L 120,40 L 120,60 L 100,70 L 80,60 L 80,40 Z" stroke="#c5a059" fill="none"/>
+    <path d="M 140,50 L 160,60 L 160,80 L 140,90 L 120,80 L 120,60 Z" stroke="#c5a059" fill="none"/>
+    <path d="M 60,50 L 80,60 L 80,80 L 60,90 L 40,80 L 40,60 Z" stroke="#c5a059" fill="none"/>
+  </g>
+</svg>
