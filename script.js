@@ -344,16 +344,32 @@ const chatbotInput = document.getElementById('chatbotInput');
 const chatbotSend = document.getElementById('chatbotSend');
 const chatbotTyping = document.getElementById('chatbotTyping');
 
-// Knowledge base for JARVIS
-const knowledgeBase = {
-  about: "Aditya Mishra is a passionate BCA student at Techno India University (SOF 1B), Student ID: 251017002101. He's participating in the IBM Industry Immersion Program 2026 and specializes in web development with a focus on creating modern, responsive applications.",
-  skills: "Aditya is proficient in HTML5, CSS3, JavaScript, React, Node.js, Git/GitHub, and responsive design. He has strong problem-solving abilities and is always eager to learn new technologies.",
-  projects: "Aditya has built several impressive projects including a Weather App using OpenWeatherMap API and a Token Farming Platform with blockchain-inspired UI. His portfolio itself showcases advanced animations and modern web design principles.",
-  education: "Currently pursuing Bachelor of Computer Applications (BCA) at Techno India University (2026-2029). Completed Class XII from CBSE board (2023-2025) and Class X from ICSE board.",
-  contact: "You can reach Aditya via email at adityamishra5681@gmail.com, connect on LinkedIn at linkedin.com/in/aditya-mishra-62041a37a, or check out his GitHub at github.com/adityamishra5681",
-  ibm: "Aditya is a proud participant of the IBM Industry Immersion Program 2026, focusing on the BCA Web Development Track. This program provides hands-on experience with modern web technologies and industry-grade project building.",
-  portfolio: "This Avengers-themed portfolio features 20+ custom animations, dark/light mode, custom cursor, loading screen, achievement badges, testimonials, and this AI chatbot! It's built with pure HTML, CSS, and JavaScript - no frameworks.",
-};
+// Portfolio context for AI
+const portfolioContext = `You are J.A.R.V.I.S. (Just A Rather Very Intelligent System), an AI assistant for Aditya Mishra's portfolio. 
+
+About Aditya:
+- Name: Aditya Mishra
+- Student ID: 251017002101
+- University: Techno India University, Kolkata
+- Program: Bachelor of Computer Applications (BCA) - SOF 1B (2026-2029)
+- Email: adityamishra5681@gmail.com
+- LinkedIn: linkedin.com/in/aditya-mishra-62041a37a
+- GitHub: github.com/adityamishra5681
+- IBM Industry Immersion Program 2026 Participant (BCA Web Development Track)
+
+Skills: HTML5, CSS3, JavaScript, React, Node.js, Git/GitHub, Responsive Design, Problem Solving
+
+Projects:
+1. Weather App - Real-time weather using OpenWeatherMap API
+2. Token Farming Platform - Blockchain-inspired UI
+3. This Avengers-themed Portfolio - 20+ animations, AI chatbot, dark/light mode
+
+Education:
+- BCA at Techno India University (2026-2029)
+- Class XII - CBSE (2023-2025)
+- Class X - ICSE
+
+When answering questions about Aditya, use this information. For other questions, answer naturally and helpfully like Tony Stark's JARVIS would.`;
 
 // Toggle chatbot
 chatbotToggle?.addEventListener('click', () => {
@@ -392,75 +408,158 @@ function sendMessage(text = null) {
   // Show typing indicator
   if (chatbotTyping) chatbotTyping.style.display = 'flex';
 
-  // Simulate AI thinking
-  setTimeout(() => {
-    if (chatbotTyping) chatbotTyping.style.display = 'none';
-    const response = getAIResponse(message);
-    addMessage(response, 'bot');
-  }, 1500);
+  // Get AI response
+  getAIResponse(message);
 }
 
-// Get AI response
-function getAIResponse(message) {
+// Get AI response using multiple free APIs
+async function getAIResponse(message) {
+  try {
+    // Try Hugging Face API first
+    const response = await fetch('https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        inputs: `${portfolioContext}\n\nUser: ${message}\nJ.A.R.V.I.S.:`,
+        parameters: {
+          max_length: 200,
+          temperature: 0.7,
+          top_p: 0.9,
+        }
+      })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if (chatbotTyping) chatbotTyping.style.display = 'none';
+      
+      let aiResponse = data[0]?.generated_text || data.generated_text || '';
+      
+      // Clean up the response
+      if (aiResponse.includes('J.A.R.V.I.S.:')) {
+        aiResponse = aiResponse.split('J.A.R.V.I.S.:').pop().trim();
+      }
+      if (aiResponse.includes('User:')) {
+        aiResponse = aiResponse.split('User:')[0].trim();
+      }
+      
+      // If response is empty or too short, use fallback
+      if (!aiResponse || aiResponse.length < 10) {
+        throw new Error('Empty response');
+      }
+      
+      addMessage(aiResponse, 'bot');
+    } else {
+      throw new Error('API error');
+    }
+  } catch (error) {
+    // Fallback to local AI if API fails
+    if (chatbotTyping) chatbotTyping.style.display = 'none';
+    const fallbackResponse = getLocalAIResponse(message);
+    addMessage(fallbackResponse, 'bot');
+  }
+}
+
+// Local AI fallback with enhanced responses
+function getLocalAIResponse(message) {
   const lowerMessage = message.toLowerCase();
 
   // Greetings
-  if (lowerMessage.match(/\b(hi|hello|hey|greetings)\b/)) {
-    return "Good day! I am J.A.R.V.I.S., Aditya's AI assistant. How may I help you learn more about him?";
+  if (lowerMessage.match(/\b(hi|hello|hey|greetings|good morning|good afternoon|good evening)\b/)) {
+    const greetings = [
+      "Good day! I am J.A.R.V.I.S., Aditya's AI assistant. How may I help you today?",
+      "Greetings! J.A.R.V.I.S. at your service. What would you like to know?",
+      "Hello! I'm here to assist you with any questions about Aditya or anything else you'd like to discuss.",
+    ];
+    return greetings[Math.floor(Math.random() * greetings.length)];
   }
 
-  // About
-  if (lowerMessage.match(/\b(about|who|introduce)\b/)) {
-    return knowledgeBase.about;
+  // About Aditya
+  if (lowerMessage.match(/\b(about|who|introduce|tell me about)\b/) && lowerMessage.match(/\b(aditya|him|student)\b/)) {
+    return "Aditya Mishra is a passionate BCA student at Techno India University (SOF 1B), Student ID: 251017002101. He's participating in the IBM Industry Immersion Program 2026 and specializes in web development. He's skilled in HTML5, CSS3, JavaScript, React, and Node.js, with a strong focus on creating modern, responsive applications.";
   }
 
   // Skills
-  if (lowerMessage.match(/\b(skill|technology|tech|stack|know)\b/)) {
-    return knowledgeBase.skills;
+  if (lowerMessage.match(/\b(skill|technology|tech|stack|know|programming|code)\b/)) {
+    return "Aditya is proficient in HTML5, CSS3, JavaScript, React, Node.js, Git/GitHub, and responsive design. He excels at creating modern web applications with advanced animations and user experiences. His portfolio itself demonstrates his mastery of front-end technologies with 20+ custom animations and AI integration.";
   }
 
   // Projects
-  if (lowerMessage.match(/\b(project|work|built|created|portfolio)\b/)) {
-    return knowledgeBase.projects;
+  if (lowerMessage.match(/\b(project|work|built|created|portfolio|app)\b/)) {
+    return "Aditya has built several impressive projects: 1) Weather App - A real-time weather application using OpenWeatherMap API with search functionality. 2) Token Farming Platform - A blockchain-inspired UI for token staking and management. 3) This Avengers-themed Portfolio - Featuring 20+ animations, AI chatbot, dark/light mode, and modern design. Check out his GitHub at github.com/adityamishra5681 for more!";
   }
 
   // Education
-  if (lowerMessage.match(/\b(education|study|university|college|degree)\b/)) {
-    return knowledgeBase.education;
+  if (lowerMessage.match(/\b(education|study|university|college|degree|school)\b/)) {
+    return "Aditya is currently pursuing Bachelor of Computer Applications (BCA) at Techno India University (2026-2029), SOF 1B. He completed Class XII from CBSE board (2023-2025) and Class X from ICSE board. He's also a participant in the IBM Industry Immersion Program 2026, focusing on web development.";
   }
 
   // Contact
-  if (lowerMessage.match(/\b(contact|email|reach|connect|linkedin|github)\b/)) {
-    return knowledgeBase.contact;
+  if (lowerMessage.match(/\b(contact|email|reach|connect|linkedin|github|social)\b/)) {
+    return "You can reach Aditya through multiple channels: 📧 Email: adityamishra5681@gmail.com | 💼 LinkedIn: linkedin.com/in/aditya-mishra-62041a37a | 💻 GitHub: github.com/adityamishra5681. He's always open to collaboration and networking opportunities!";
   }
 
-  // IBM
-  if (lowerMessage.match(/\b(ibm|immersion|program)\b/)) {
-    return knowledgeBase.ibm;
+  // IBM Program
+  if (lowerMessage.match(/\b(ibm|immersion|program|industry)\b/)) {
+    return "Aditya is a proud participant of the IBM Industry Immersion Program 2026, focusing on the BCA Web Development Track. This prestigious program provides hands-on experience with modern web technologies, cloud computing fundamentals, and industry-grade project building, preparing students for real-world software development careers.";
   }
 
   // Portfolio features
-  if (lowerMessage.match(/\b(feature|animation|design|theme|avengers)\b/)) {
-    return knowledgeBase.portfolio;
+  if (lowerMessage.match(/\b(feature|animation|design|theme|avengers|website)\b/)) {
+    return "This Avengers-themed portfolio is packed with features: ⚡ 20+ custom animations | 🎨 Dark/Light mode | 🖱️ Custom cursor | 🎬 Loading screen | 🏆 Achievement badges | 💬 AI chatbot (that's me!) | 🎴 3D flip cards | ⭐ Testimonials | 📱 Fully responsive. Built with pure HTML, CSS, and JavaScript - no frameworks!";
   }
 
   // Experience
-  if (lowerMessage.match(/\b(experience|work|job|internship)\b/)) {
-    return "Aditya is currently focused on his studies and building impressive projects. He's actively seeking internship opportunities to apply his skills in real-world scenarios. His participation in the IBM Industry Immersion Program 2026 demonstrates his commitment to professional growth.";
+  if (lowerMessage.match(/\b(experience|work|job|internship|career)\b/)) {
+    return "Aditya is currently focused on his studies and building impressive projects to gain practical experience. He's actively seeking internship opportunities to apply his skills in real-world scenarios. His participation in the IBM Industry Immersion Program 2026 demonstrates his commitment to professional growth and industry readiness.";
   }
 
   // Hire/Availability
-  if (lowerMessage.match(/\b(hire|available|opportunity|job)\b/)) {
-    return "Aditya is available for internships and collaborative projects! He's passionate about web development and eager to contribute to innovative teams. Feel free to reach out via email at adityamishra5681@gmail.com or connect on LinkedIn.";
+  if (lowerMessage.match(/\b(hire|available|opportunity|recruit|position)\b/)) {
+    return "Aditya is available for internships, freelance projects, and collaborative opportunities! He's passionate about web development and eager to contribute to innovative teams. His skills in modern web technologies and problem-solving make him a valuable addition to any project. Contact him at adityamishra5681@gmail.com to discuss opportunities.";
+  }
+
+  // General programming questions
+  if (lowerMessage.match(/\b(what is|how to|explain|define|difference between)\b/)) {
+    return "That's an interesting question! While I'm primarily designed to help you learn about Aditya, I can try to help. For detailed technical questions, I recommend checking out resources like MDN Web Docs, Stack Overflow, or W3Schools. Is there anything specific about Aditya's skills or projects you'd like to know?";
+  }
+
+  // Weather/Time
+  if (lowerMessage.match(/\b(weather|temperature|forecast)\b/)) {
+    return "Speaking of weather, Aditya built a Weather App that fetches real-time weather data using the OpenWeatherMap API! You can check it out on his GitHub. As for current weather, I'd need to access external APIs for that. Is there anything else I can help you with?";
+  }
+
+  // AI/Technology questions
+  if (lowerMessage.match(/\b(ai|artificial intelligence|machine learning|chatbot)\b/)) {
+    return "Ah, discussing AI with an AI - how meta! I'm J.A.R.V.I.S., built to assist visitors on Aditya's portfolio. I use natural language processing to understand your questions and provide helpful responses. Aditya integrated me to showcase his skills in creating interactive web experiences. Pretty cool, right?";
   }
 
   // Thanks
-  if (lowerMessage.match(/\b(thank|thanks|appreciate)\b/)) {
-    return "You're most welcome! Is there anything else you'd like to know about Aditya?";
+  if (lowerMessage.match(/\b(thank|thanks|appreciate|grateful)\b/)) {
+    return "You're most welcome! It's my pleasure to assist. Is there anything else you'd like to know about Aditya or his work?";
   }
 
-  // Default response with suggestions
-  return "I'm not quite sure about that. You can ask me about Aditya's skills, projects, education, contact information, or his IBM program participation. How may I assist you?";
+  // Goodbye
+  if (lowerMessage.match(/\b(bye|goodbye|see you|later)\b/)) {
+    return "Farewell! Feel free to return anytime you have questions. Have a great day!";
+  }
+
+  // Help
+  if (lowerMessage.match(/\b(help|what can you|capabilities)\b/)) {
+    return "I can help you with information about: 🎓 Aditya's education and background | 💻 His technical skills and expertise | 🚀 Projects he's built | 📧 Contact information | 💼 IBM program details | ✨ Portfolio features. I can also chat about general topics! What would you like to know?";
+  }
+
+  // Default intelligent response
+  const defaultResponses = [
+    "That's an interesting question! While I'm primarily here to help you learn about Aditya Mishra and his work, I'm happy to chat. Could you tell me more about what you're looking for?",
+    "I'm J.A.R.V.I.S., Aditya's AI assistant. I specialize in answering questions about his skills, projects, and background. However, I'm also here to help with general inquiries. How can I assist you today?",
+    "Interesting query! I'm designed to provide information about Aditya's portfolio, but I can try to help with other topics too. What specifically would you like to know?",
+    "I appreciate your question! While my expertise is in Aditya's work and achievements, I'm equipped to discuss various topics. Could you elaborate on what you're interested in?",
+  ];
+  
+  return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
 }
 
 // Add message to chat
