@@ -606,3 +606,92 @@ chatbotSend?.addEventListener('click', () => {
   sendMessage();
 });
 
+// ============ REVIEW FORM ============
+const reviewForm = document.getElementById('reviewForm');
+const starRating = document.getElementById('starRating');
+const reviewRatingInput = document.getElementById('reviewRating');
+const reviewSuccess = document.getElementById('reviewSuccess');
+
+// Star rating functionality
+if (starRating) {
+  const stars = starRating.querySelectorAll('.star');
+  let selectedRating = 0;
+
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      selectedRating = parseInt(star.getAttribute('data-rating'));
+      reviewRatingInput.value = selectedRating;
+      
+      // Update star display
+      stars.forEach((s, index) => {
+        if (index < selectedRating) {
+          s.textContent = '★';
+          s.classList.add('active');
+        } else {
+          s.textContent = '☆';
+          s.classList.remove('active');
+        }
+      });
+    });
+
+    star.addEventListener('mouseenter', () => {
+      const rating = parseInt(star.getAttribute('data-rating'));
+      stars.forEach((s, index) => {
+        if (index < rating) {
+          s.textContent = '★';
+        } else {
+          s.textContent = '☆';
+        }
+      });
+    });
+  });
+
+  starRating.addEventListener('mouseleave', () => {
+    stars.forEach((s, index) => {
+      if (index < selectedRating) {
+        s.textContent = '★';
+      } else {
+        s.textContent = '☆';
+      }
+    });
+  });
+}
+
+// Review form submission
+reviewForm?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const name = document.getElementById('reviewName').value;
+  const email = document.getElementById('reviewEmail').value;
+  const role = document.getElementById('reviewRole').value;
+  const rating = reviewRatingInput.value;
+  const message = document.getElementById('reviewMessage').value;
+
+  if (!rating) {
+    alert('Please select a rating!');
+    return;
+  }
+
+  // Here you would normally send to a backend/API
+  // For now, we'll just show success message
+  console.log('Review submitted:', { name, email, role, rating, message });
+
+  // Hide form and show success message
+  reviewForm.style.display = 'none';
+  reviewSuccess.style.display = 'block';
+
+  // Reset form after 5 seconds
+  setTimeout(() => {
+    reviewForm.style.display = 'block';
+    reviewSuccess.style.display = 'none';
+    reviewForm.reset();
+    reviewRatingInput.value = '';
+    if (starRating) {
+      starRating.querySelectorAll('.star').forEach(s => {
+        s.textContent = '☆';
+        s.classList.remove('active');
+      });
+    }
+  }, 5000);
+});
+

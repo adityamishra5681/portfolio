@@ -359,6 +359,60 @@
     </div>
   </section>
 
+  <!-- LEAVE A REVIEW SECTION -->
+  <section class="section leave-review-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">// YOUR FEEDBACK</span>
+        <h2>Leave a <span class="gold-text">Review</span></h2>
+        <p style="max-width: 600px; margin: 1rem auto 0; color: var(--text-muted);">
+          Your feedback helps me improve! Share your thoughts about my portfolio or work.
+        </p>
+      </div>
+      <div class="review-form-container reveal">
+        <form class="review-form" id="reviewForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reviewName">Your Name *</label>
+              <input type="text" id="reviewName" class="form-input" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="reviewEmail">Your Email *</label>
+              <input type="email" id="reviewEmail" class="form-input" placeholder="john@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reviewRole">Your Role/Position</label>
+            <input type="text" id="reviewRole" class="form-input" placeholder="e.g., Developer, Student, Recruiter" />
+          </div>
+          <div class="form-group">
+            <label>Rating *</label>
+            <div class="star-rating" id="starRating">
+              <span class="star" data-rating="1">☆</span>
+              <span class="star" data-rating="2">☆</span>
+              <span class="star" data-rating="3">☆</span>
+              <span class="star" data-rating="4">☆</span>
+              <span class="star" data-rating="5">☆</span>
+            </div>
+            <input type="hidden" id="reviewRating" required />
+          </div>
+          <div class="form-group">
+            <label for="reviewMessage">Your Review *</label>
+            <textarea id="reviewMessage" class="form-textarea" rows="5" placeholder="Share your thoughts about my work, skills, or portfolio..." required></textarea>
+          </div>
+          <button type="submit" class="btn-avenger">
+            Submit Review ⭐
+          </button>
+        </form>
+        <div class="review-success" id="reviewSuccess" style="display: none;">
+          <div class="success-icon">✓</div>
+          <h3>Thank You!</h3>
+          <p>Your review has been submitted successfully. I appreciate your feedback!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
