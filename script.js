@@ -339,6 +339,7 @@ console.log('%c Built with HTML · CSS · JavaScript ', 'color:#9999b8;font-size
 const chatbotToggle = document.getElementById('chatbotToggle');
 const chatbotContainer = document.getElementById('chatbotContainer');
 const chatbotMinimize = document.getElementById('chatbotMinimize');
+const chatbotClose = document.getElementById('chatbotClose');
 const chatbotMessages = document.getElementById('chatbotMessages');
 const chatbotInput = document.getElementById('chatbotInput');
 const chatbotSend = document.getElementById('chatbotSend');
@@ -382,6 +383,12 @@ chatbotToggle?.addEventListener('click', () => {
 // Minimize chatbot
 chatbotMinimize?.addEventListener('click', () => {
   chatbotContainer?.classList.toggle('minimized');
+});
+
+// Close chatbot
+chatbotClose?.addEventListener('click', () => {
+  chatbotContainer?.classList.remove('active');
+  chatbotContainer?.classList.remove('minimized');
 });
 
 // Quick action buttons

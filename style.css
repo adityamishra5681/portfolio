@@ -334,7 +334,13 @@ img { max-width: 100%; display: block; }
   font-family: 'Rajdhani', sans-serif;
 }
 
-.chatbot-minimize {
+.chatbot-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chatbot-minimize,
+.chatbot-close {
   background: rgba(10,10,15,0.2);
   border: none;
   width: 32px;
@@ -347,11 +353,21 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
+  line-height: 1;
 }
 
-.chatbot-minimize:hover {
+.chatbot-minimize:hover,
+.chatbot-close:hover {
   background: rgba(10,10,15,0.4);
   transform: scale(1.1);
+}
+
+.chatbot-close {
+  font-size: 2rem;
+}
+
+.chatbot-close:hover {
+  background: rgba(220,20,60,0.8);
 }
 
 .chatbot-messages {
@@ -1138,6 +1154,119 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   font-family: 'Rajdhani', sans-serif;
   letter-spacing: 0.5px;
+}
+
+/* ============ CERTIFICATES SECTION ============ */
+.certificates-section {
+  background: var(--bg2);
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.certificate-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.certificate-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(197,160,89,0.1), transparent);
+  transform: translate(30%, -30%);
+  transition: transform 0.3s;
+}
+
+.certificate-card:hover::before {
+  transform: translate(30%, -30%) scale(1.5);
+}
+
+.certificate-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold);
+  box-shadow: var(--glow);
+}
+
+.cert-badge {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.certificate-card:hover .cert-badge {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.certificate-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text);
+}
+
+.cert-issuer {
+  font-size: 0.9rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.cert-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.cert-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--bg2);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  color: var(--gold);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Rajdhani', sans-serif;
+  transition: all 0.3s;
+  align-self: flex-start;
+}
+
+.cert-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.cert-link:hover {
+  background: var(--gold);
+  color: var(--bg);
+  transform: translateX(5px);
 }
 
 /* ============ ACHIEVEMENT BADGES ============ */
