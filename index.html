@@ -10,8 +10,25 @@
 </head>
 <body>
 
+  <!-- LOADING SCREEN -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loader-content">
+      <div class="avengers-loader">
+        <div class="loader-ring"></div>
+        <div class="loader-ring"></div>
+        <div class="loader-ring"></div>
+        <div class="loader-a">A</div>
+      </div>
+      <p class="loader-text">Initializing Avengers Protocol...</p>
+    </div>
+  </div>
+
   <!-- PARTICLE CANVAS -->
   <canvas id="particles"></canvas>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-outline" id="cursorOutline"></div>
 
   <!-- IRON MAN ARC REACTOR BG -->
   <div class="arc-reactor-bg"></div>
@@ -121,6 +138,48 @@
     </div>
   </section>
 
+  <!-- ACHIEVEMENT BADGES -->
+  <section class="section achievements-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">// ACHIEVEMENTS</span>
+        <h2>Unlocked <span class="gold-text">Badges</span></h2>
+      </div>
+      <div class="badges-grid">
+        <div class="badge-card reveal">
+          <div class="badge-icon">🎓</div>
+          <h4>BCA Student</h4>
+          <p>Techno India University</p>
+        </div>
+        <div class="badge-card reveal">
+          <div class="badge-icon">💼</div>
+          <h4>IBM Participant</h4>
+          <p>Industry Immersion 2025</p>
+        </div>
+        <div class="badge-card reveal">
+          <div class="badge-icon">💻</div>
+          <h4>Full-Stack Dev</h4>
+          <p>HTML, CSS, JavaScript</p>
+        </div>
+        <div class="badge-card reveal">
+          <div class="badge-icon">🚀</div>
+          <h4>Project Builder</h4>
+          <p>2+ Live Projects</p>
+        </div>
+        <div class="badge-card reveal">
+          <div class="badge-icon">⚡</div>
+          <h4>Fast Learner</h4>
+          <p>Always Evolving</p>
+        </div>
+        <div class="badge-card reveal">
+          <div class="badge-icon">🎯</div>
+          <h4>Problem Solver</h4>
+          <p>Logic & Creativity</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FEATURED PROJECTS PREVIEW -->
   <section class="section" id="featured">
     <div class="container">
@@ -186,6 +245,13 @@
       </div>
     </div>
   </footer>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button class="scroll-top" id="scrollTop" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
 
   <script src="script.js"></script>
 </body>

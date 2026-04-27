@@ -49,6 +49,7 @@ body {
   overflow-x: hidden;
   position: relative;
   transition: background 0.3s, color 0.3s;
+  cursor: none;
 }
 
 h1,h2,h3,h4 { font-family: 'Rajdhani', sans-serif; line-height: 1.2; font-weight: 700; }
@@ -58,6 +59,166 @@ img { max-width: 100%; display: block; }
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ============ LOADING SCREEN ============ */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-content {
+  text-align: center;
+}
+
+.avengers-loader {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2rem;
+}
+
+.loader-ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: loaderSpin 1.5s linear infinite;
+}
+
+.loader-ring:nth-child(2) {
+  inset: 10px;
+  border-top-color: var(--gold-dark);
+  animation-duration: 2s;
+  animation-direction: reverse;
+}
+
+.loader-ring:nth-child(3) {
+  inset: 20px;
+  border-top-color: var(--gold);
+  animation-duration: 2.5s;
+}
+
+@keyframes loaderSpin {
+  to { transform: rotate(360deg); }
+}
+
+.loader-a {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--gold);
+  animation: loaderPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loaderPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.loader-text {
+  color: var(--text-muted);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  animation: loaderText 2s ease-in-out infinite;
+}
+
+@keyframes loaderText {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ============ CUSTOM CURSOR ============ */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.15s ease;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-outline {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transition: all 0.15s ease;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+}
+
+.cursor-dot.hover {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+.cursor-outline.hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 1;
+}
+
+/* ============ SCROLL TO TOP BUTTON ============ */
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border: none;
+  border-radius: 50%;
+  color: var(--bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--glow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s;
+  z-index: 1000;
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 0 40px rgba(197,160,89,0.6);
+}
+
+.scroll-top svg {
+  width: 24px;
+  height: 24px;
+}
 
 /* ============ PARTICLE CANVAS ============ */
 #particles {
@@ -546,6 +707,88 @@ img { max-width: 100%; display: block; }
 
 .gold-text { color: var(--gold); }
 
+/* ============ ACHIEVEMENT BADGES ============ */
+.achievements-section {
+  background: var(--bg2);
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.badge-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.badge-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent,
+    rgba(197,160,89,0.1),
+    transparent 30%
+  );
+  animation: badgeRotate 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+@keyframes badgeRotate {
+  to { transform: rotate(360deg); }
+}
+
+.badge-card:hover::before {
+  opacity: 1;
+}
+
+.badge-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  border-color: var(--gold);
+  box-shadow: var(--glow);
+}
+
+.badge-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  transition: transform 0.3s;
+  position: relative;
+  z-index: 1;
+}
+
+.badge-card:hover .badge-icon {
+  transform: scale(1.2) rotateY(360deg);
+}
+
+.badge-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--gold);
+  position: relative;
+  z-index: 1;
+}
+
+.badge-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+}
+
 /* ============ FEATURED CARDS ============ */
 .feat-grid {
   display: grid; 
@@ -815,6 +1058,8 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 640px) {
+  body { cursor: auto; }
+  .cursor-dot, .cursor-outline { display: none; }
   .nav-links {
     display: none; flex-direction: column;
     position: absolute; top: 100%; left: 0; right: 0;
@@ -826,6 +1071,15 @@ img { max-width: 100%; display: block; }
   .hero-right { width: 300px; height: 300px; }
   .photo-hex { width: 220px; height: 220px; }
   .tech-badge { font-size: 0.7rem; padding: 0.3rem 0.7rem; }
+  .badges-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .scroll-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 45px;
+    height: 45px;
+  }
 }
 
 /* ============ ABOUT PAGE ============ */

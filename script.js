@@ -3,6 +3,58 @@
    IBM Industry Immersion Program 2025
    ============================================= */
 
+// ============ LOADING SCREEN ============
+window.addEventListener('load', () => {
+  const loadingScreen = document.getElementById('loadingScreen');
+  setTimeout(() => {
+    loadingScreen?.classList.add('hidden');
+  }, 1500);
+});
+
+// ============ CUSTOM CURSOR ============
+const cursorDot = document.getElementById('cursorDot');
+const cursorOutline = document.getElementById('cursorOutline');
+
+if (cursorDot && cursorOutline) {
+  document.addEventListener('mousemove', (e) => {
+    cursorDot.style.left = e.clientX + 'px';
+    cursorDot.style.top = e.clientY + 'px';
+    cursorOutline.style.left = e.clientX + 'px';
+    cursorOutline.style.top = e.clientY + 'px';
+  });
+
+  // Add hover effect on interactive elements
+  const interactiveElements = document.querySelectorAll('a, button, .feat-card, .proj-card, .tech-card, .badge-card');
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursorDot?.classList.add('hover');
+      cursorOutline?.classList.add('hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursorDot?.classList.remove('hover');
+      cursorOutline?.classList.remove('hover');
+    });
+  });
+}
+
+// ============ SCROLL TO TOP BUTTON ============
+const scrollTopBtn = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) {
+    scrollTopBtn?.classList.add('visible');
+  } else {
+    scrollTopBtn?.classList.remove('visible');
+  }
+});
+
+scrollTopBtn?.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
 // ============ NAVBAR SCROLL ============
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
