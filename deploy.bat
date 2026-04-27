@@ -1,6 +1,6 @@
 @echo off
 REM Avengers Portfolio - GitHub Deployment Script (Windows)
-REM For Aditya Mishra - IBM Industry Immersion Program 2025
+REM For Aditya Mishra - IBM Industry Immersion Program 2026
 
 echo.
 echo ========================================

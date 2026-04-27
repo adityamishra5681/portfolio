@@ -23,7 +23,7 @@ git commit -m "Initial commit: Avengers-themed portfolio for IBM Immersion Progr
 1. Go to [GitHub](https://github.com)
 2. Click the **+** icon (top right) → **New repository**
 3. Repository name: `portfolio` (or any name you prefer)
-4. Description: "Avengers-themed portfolio for IBM Industry Immersion Program 2025"
+4. Description: "Avengers-themed portfolio for IBM Industry Immersion Program 2026"
 5. Keep it **Public**
 6. **DO NOT** initialize with README (we already have one)
 7. Click **Create repository**

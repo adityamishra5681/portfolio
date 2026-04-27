@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Avengers Portfolio - GitHub Deployment Script
-# For Aditya Mishra - IBM Industry Immersion Program 2025
+# For Aditya Mishra - IBM Industry Immersion Program 2026
 
 echo "🦸 AVENGERS PORTFOLIO DEPLOYMENT"
 echo "=================================="

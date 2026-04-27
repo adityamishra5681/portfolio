@@ -1,7 +1,7 @@
 # Aditya Mishra — Personal Portfolio 🦸‍♂️
 
 **Avengers-Themed Portfolio Website**  
-Built for IBM Industry Immersion Program 2025 · BCA Web Development Track
+Built for IBM Industry Immersion Program 2026 · BCA Web Development Track
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://adityamishra5681.github.io/portfolio)
 [![GitHub](https://img.shields.io/badge/github-portfolio-blue)](https://github.com/adityamishra5681/portfolio)
@@ -183,9 +183,9 @@ portfolio/
 
 ---
 
-## 🎯 IBM Industry Immersion Program 2025
+## 🎯 IBM Industry Immersion Program 2026
 
-This portfolio was created as part of the **IBM Industry Immersion Program 2025** for the BCA Web Development Track. It demonstrates:
+This portfolio was created as part of the **IBM Industry Immersion Program 2026** for the BCA Web Development Track. It demonstrates:
 
 - ✅ Advanced HTML5 semantic structure
 - ✅ Modern CSS3 techniques (Grid, Flexbox, Custom Properties)
@@ -199,8 +199,8 @@ This portfolio was created as part of the **IBM Industry Immersion Program 2025*
 
 ## 📜 License
 
-© 2025 Aditya Mishra · Techno India University  
-Built for IBM Industry Immersion Program 2025
+© 2026 Aditya Mishra · Techno India University  
+Built for IBM Industry Immersion Program 2026
 
 This project is open source and available for educational purposes.
 
@@ -208,7 +208,7 @@ This project is open source and available for educational purposes.
 
 ## 🙏 Acknowledgments
 
-- **IBM** — Industry Immersion Program 2025
+- **IBM** — Industry Immersion Program 2026
 - **Techno India University** — BCA Program, SOF 1B
 - **Marvel/Avengers** — Design inspiration
 - **Google Fonts** — Orbitron, Rajdhani, Inter typefaces

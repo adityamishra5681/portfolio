@@ -3,7 +3,7 @@
 ║     🦸 AVENGERS PORTFOLIO - QUICK START GUIDE 🦸            ║
 ║                                                              ║
 ║     For: Aditya Mishra                                      ║
-║     Program: IBM Industry Immersion 2025                    ║
+║     Program: IBM Industry Immersion 2026                    ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
 
@@ -165,4 +165,4 @@ Want to update info?
 
 ═══════════════════════════════════════════════════════════════
 
-Made with ❤️ and ⚡ for IBM Industry Immersion Program 2025
+Made with ❤️ and ⚡ for IBM Industry Immersion Program 2026

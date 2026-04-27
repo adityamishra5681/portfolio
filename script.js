@@ -1,6 +1,6 @@
 /* =============================================
    ADITYA MISHRA PORTFOLIO — JAVASCRIPT
-   IBM Industry Immersion Program 2025
+   IBM Industry Immersion Program 2026
    ============================================= */
 
 // ============ LOADING SCREEN ============
@@ -332,5 +332,5 @@ document.querySelectorAll('.proj-card').forEach(card => {
 });
 
 console.log('%c ADITYA MISHRA PORTFOLIO ', 'background:linear-gradient(135deg,#c5a059,#a88644);color:#0a0a0f;font-size:16px;padding:8px 16px;border-radius:6px;font-weight:bold;');
-console.log('%c IBM Industry Immersion Program 2025 ', 'color:#c5a059;font-size:12px;font-weight:600;');
+console.log('%c IBM Industry Immersion Program 2026 ', 'color:#c5a059;font-size:12px;font-weight:600;');
 console.log('%c Built with HTML · CSS · JavaScript ', 'color:#9999b8;font-size:11px;');

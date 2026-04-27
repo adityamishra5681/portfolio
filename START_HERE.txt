@@ -3,7 +3,7 @@
 ║                                                                      ║
 ║                  🦸 WELCOME TO YOUR PORTFOLIO! 🦸                   ║
 ║                                                                      ║
-║              Avengers-Themed Portfolio for IBM 2025                 ║
+║              Avengers-Themed Portfolio for IBM 2026                 ║
 ║                                                                      ║
 ╚══════════════════════════════════════════════════════════════════════╝
 
@@ -219,4 +219,4 @@ Good luck with your IBM Industry Immersion Program! 🚀
 You've got this! 💪
 
 
-Made with ❤️ and ⚡ for IBM Industry Immersion Program 2025
+Made with ❤️ and ⚡ for IBM Industry Immersion Program 2026

@@ -6,7 +6,7 @@
 **ID:** 251017002101  
 **University:** Techno India University  
 **Program:** BCA (SOF 1B)  
-**Purpose:** IBM Industry Immersion Program 2025 - Web Development Track
+**Purpose:** IBM Industry Immersion Program 2026 - Web Development Track
 
 ---
 
@@ -387,5 +387,5 @@ Follow the instructions in **DEPLOY_NOW.md** to get it live on GitHub Pages.
 ---
 
 **Made with ❤️ and ⚡ by Aditya Mishra**  
-**For IBM Industry Immersion Program 2025**  
+**For IBM Industry Immersion Program 2026**  
 **Avengers Assemble! 🦸‍♂️**
