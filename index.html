@@ -316,6 +316,56 @@
     </svg>
   </button>
 
+  <!-- JARVIS AI CHATBOT -->
+  <div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header">
+      <div class="chatbot-title">
+        <div class="jarvis-icon">🤖</div>
+        <div>
+          <h4>J.A.R.V.I.S.</h4>
+          <p>Just A Rather Very Intelligent System</p>
+        </div>
+      </div>
+      <button class="chatbot-minimize" id="chatbotMinimize">−</button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="message bot-message">
+        <div class="message-avatar">🤖</div>
+        <div class="message-content">
+          <p>Good day, Sir. I am J.A.R.V.I.S., Aditya's AI assistant. How may I assist you today?</p>
+          <div class="quick-actions">
+            <button class="quick-btn" data-question="Tell me about Aditya">About Aditya</button>
+            <button class="quick-btn" data-question="What are his skills?">Skills</button>
+            <button class="quick-btn" data-question="Show me his projects">Projects</button>
+            <button class="quick-btn" data-question="How can I contact him?">Contact</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" id="chatbotInput" placeholder="Ask J.A.R.V.I.S. anything..." />
+      <button id="chatbotSend">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="chatbot-typing" id="chatbotTyping" style="display: none;">
+      <div class="typing-indicator">
+        <span></span><span></span><span></span>
+      </div>
+      <p>J.A.R.V.I.S. is thinking...</p>
+    </div>
+  </div>
+
+  <!-- CHATBOT TOGGLE BUTTON -->
+  <button class="chatbot-toggle" id="chatbotToggle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <span class="chatbot-badge">AI</span>
+  </button>
+
   <script src="script.js"></script>
 </body>
 </html>

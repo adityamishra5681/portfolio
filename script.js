@@ -334,3 +334,169 @@ document.querySelectorAll('.proj-card').forEach(card => {
 console.log('%c ADITYA MISHRA PORTFOLIO ', 'background:linear-gradient(135deg,#c5a059,#a88644);color:#0a0a0f;font-size:16px;padding:8px 16px;border-radius:6px;font-weight:bold;');
 console.log('%c IBM Industry Immersion Program 2026 ', 'color:#c5a059;font-size:12px;font-weight:600;');
 console.log('%c Built with HTML · CSS · JavaScript ', 'color:#9999b8;font-size:11px;');
+
+// ============ JARVIS AI CHATBOT ============
+const chatbotToggle = document.getElementById('chatbotToggle');
+const chatbotContainer = document.getElementById('chatbotContainer');
+const chatbotMinimize = document.getElementById('chatbotMinimize');
+const chatbotMessages = document.getElementById('chatbotMessages');
+const chatbotInput = document.getElementById('chatbotInput');
+const chatbotSend = document.getElementById('chatbotSend');
+const chatbotTyping = document.getElementById('chatbotTyping');
+
+// Knowledge base for JARVIS
+const knowledgeBase = {
+  about: "Aditya Mishra is a passionate BCA student at Techno India University (SOF 1B), Student ID: 251017002101. He's participating in the IBM Industry Immersion Program 2026 and specializes in web development with a focus on creating modern, responsive applications.",
+  skills: "Aditya is proficient in HTML5, CSS3, JavaScript, React, Node.js, Git/GitHub, and responsive design. He has strong problem-solving abilities and is always eager to learn new technologies.",
+  projects: "Aditya has built several impressive projects including a Weather App using OpenWeatherMap API and a Token Farming Platform with blockchain-inspired UI. His portfolio itself showcases advanced animations and modern web design principles.",
+  education: "Currently pursuing Bachelor of Computer Applications (BCA) at Techno India University (2026-2029). Completed Class XII from CBSE board (2023-2025) and Class X from ICSE board.",
+  contact: "You can reach Aditya via email at adityamishra5681@gmail.com, connect on LinkedIn at linkedin.com/in/aditya-mishra-62041a37a, or check out his GitHub at github.com/adityamishra5681",
+  ibm: "Aditya is a proud participant of the IBM Industry Immersion Program 2026, focusing on the BCA Web Development Track. This program provides hands-on experience with modern web technologies and industry-grade project building.",
+  portfolio: "This Avengers-themed portfolio features 20+ custom animations, dark/light mode, custom cursor, loading screen, achievement badges, testimonials, and this AI chatbot! It's built with pure HTML, CSS, and JavaScript - no frameworks.",
+};
+
+// Toggle chatbot
+chatbotToggle?.addEventListener('click', () => {
+  chatbotContainer?.classList.toggle('active');
+  if (chatbotContainer?.classList.contains('minimized')) {
+    chatbotContainer?.classList.remove('minimized');
+  }
+});
+
+// Minimize chatbot
+chatbotMinimize?.addEventListener('click', () => {
+  chatbotContainer?.classList.toggle('minimized');
+});
+
+// Quick action buttons
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('quick-btn')) {
+    const question = e.target.getAttribute('data-question');
+    if (question) {
+      sendMessage(question);
+    }
+  }
+});
+
+// Send message
+function sendMessage(text = null) {
+  const message = text || chatbotInput?.value.trim();
+  if (!message) return;
+
+  // Add user message
+  addMessage(message, 'user');
+  
+  // Clear input
+  if (chatbotInput) chatbotInput.value = '';
+
+  // Show typing indicator
+  if (chatbotTyping) chatbotTyping.style.display = 'flex';
+
+  // Simulate AI thinking
+  setTimeout(() => {
+    if (chatbotTyping) chatbotTyping.style.display = 'none';
+    const response = getAIResponse(message);
+    addMessage(response, 'bot');
+  }, 1500);
+}
+
+// Get AI response
+function getAIResponse(message) {
+  const lowerMessage = message.toLowerCase();
+
+  // Greetings
+  if (lowerMessage.match(/\b(hi|hello|hey|greetings)\b/)) {
+    return "Good day! I am J.A.R.V.I.S., Aditya's AI assistant. How may I help you learn more about him?";
+  }
+
+  // About
+  if (lowerMessage.match(/\b(about|who|introduce)\b/)) {
+    return knowledgeBase.about;
+  }
+
+  // Skills
+  if (lowerMessage.match(/\b(skill|technology|tech|stack|know)\b/)) {
+    return knowledgeBase.skills;
+  }
+
+  // Projects
+  if (lowerMessage.match(/\b(project|work|built|created|portfolio)\b/)) {
+    return knowledgeBase.projects;
+  }
+
+  // Education
+  if (lowerMessage.match(/\b(education|study|university|college|degree)\b/)) {
+    return knowledgeBase.education;
+  }
+
+  // Contact
+  if (lowerMessage.match(/\b(contact|email|reach|connect|linkedin|github)\b/)) {
+    return knowledgeBase.contact;
+  }
+
+  // IBM
+  if (lowerMessage.match(/\b(ibm|immersion|program)\b/)) {
+    return knowledgeBase.ibm;
+  }
+
+  // Portfolio features
+  if (lowerMessage.match(/\b(feature|animation|design|theme|avengers)\b/)) {
+    return knowledgeBase.portfolio;
+  }
+
+  // Experience
+  if (lowerMessage.match(/\b(experience|work|job|internship)\b/)) {
+    return "Aditya is currently focused on his studies and building impressive projects. He's actively seeking internship opportunities to apply his skills in real-world scenarios. His participation in the IBM Industry Immersion Program 2026 demonstrates his commitment to professional growth.";
+  }
+
+  // Hire/Availability
+  if (lowerMessage.match(/\b(hire|available|opportunity|job)\b/)) {
+    return "Aditya is available for internships and collaborative projects! He's passionate about web development and eager to contribute to innovative teams. Feel free to reach out via email at adityamishra5681@gmail.com or connect on LinkedIn.";
+  }
+
+  // Thanks
+  if (lowerMessage.match(/\b(thank|thanks|appreciate)\b/)) {
+    return "You're most welcome! Is there anything else you'd like to know about Aditya?";
+  }
+
+  // Default response with suggestions
+  return "I'm not quite sure about that. You can ask me about Aditya's skills, projects, education, contact information, or his IBM program participation. How may I assist you?";
+}
+
+// Add message to chat
+function addMessage(text, type) {
+  if (!chatbotMessages) return;
+
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${type}-message`;
+  
+  const avatar = document.createElement('div');
+  avatar.className = 'message-avatar';
+  avatar.textContent = type === 'bot' ? '🤖' : '👤';
+  
+  const content = document.createElement('div');
+  content.className = 'message-content';
+  
+  const p = document.createElement('p');
+  p.textContent = text;
+  
+  content.appendChild(p);
+  messageDiv.appendChild(avatar);
+  messageDiv.appendChild(content);
+  
+  chatbotMessages.appendChild(messageDiv);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+// Send on Enter key
+chatbotInput?.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    sendMessage();
+  }
+});
+
+// Send button click
+chatbotSend?.addEventListener('click', () => {
+  sendMessage();
+});
+
